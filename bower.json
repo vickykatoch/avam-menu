@@ -1,0 +1,20 @@
+{
+  "name": "avam-menu",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Aryadi"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vickykatoch/avam-menu",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "lib",
+    "test",
+    "tests"
+  ]
+}

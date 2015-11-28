@@ -1,0 +1,19 @@
+{
+  "name": "avam-menu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vickykatoch/avam-menu.git"
+  },
+  "author": "Aryadi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vickykatoch/avam-menu/issues"
+  },
+  "homepage": "https://github.com/vickykatoch/avam-menu#readme"
+}

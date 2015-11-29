@@ -7,16 +7,22 @@
 	<link rel="stylesheet" href="src/avamMenu.css">
 </head>
 
-<body class="container-fluid">
+<body class="container-fluid" ng-controller="appController as vm">
 	<div>
 		<h1>Avam Menu Demo</h1>
 		
 	</div>
-	<div ng-controller="appController as vm">
+	<div >
 		<avam-menu>
 			<avam-menu-item label="Dashboard" icon="glyphicon-dashboard" route="Dashboard"></avam-menu-item>
 			<avam-menu-item label="Income Statement" icon="glyphicon-phone"  route="Income Statement"></avam-menu-item>
 			<avam-menu-item label="Help" icon="glyphicon-phone-alt"  route="Help"></avam-menu-item>
+			<avam-menu-group label="Sub Menu" icon="glyphicon-cd">
+				
+				<avam-menu-item label="Sub Menu 1" icon="glyphicon-phone" route="Sub Menu 1"></avam-menu-item>
+				<avam-menu-item label="Sub Menu 2" icon="glyphicon-dashboard" route="Sub Menu 2"></avam-menu-item>
+				<avam-menu-item label="Sub Menu 3" icon="glyphicon-phone" route="Sub Menu 3"></avam-menu-item>
+			</avam-menu-group>
 		</avam-menu>
 		<div style="position:absolute; left:300px; top: 200px; color:red">
 			{{vm.route}}
@@ -30,7 +36,7 @@
 	<script src="src/avamMenu.module.js"></script>
 	<script src="src/avamMenu.directive.js"></script>
 	<script src="src/avamMenuItem.directive.js"></script>
-
+	<script src="src/avamMenuGroup.directive.js"></script>
 
 
 	<script src="proto/app.js"></script>

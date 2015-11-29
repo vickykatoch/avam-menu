@@ -16,11 +16,16 @@ var avam;
                 return new AvamMenuItemDirective;
             };
             AvamMenuItemDirective.prototype.link = function (scope, elem, attributes, controller) {
+                scope.isActive = function () {
+                    return elem === controller.getActiveElement();
+                };
                 elem.on('click', function (evt) {
                     evt.stopPropagation();
                     evt.preventDefault();
-                    controller.setActiveElement(elem);
-                    controller.setRoute(attributes.route);
+                    scope.$apply(function () {
+                        controller.setActiveElement(elem);
+                        controller.setRoute(attributes.route);
+                    });
                 });
             };
             return AvamMenuItemDirective;

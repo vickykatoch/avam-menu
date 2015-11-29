@@ -2,26 +2,37 @@ module avam.proto{
 	'use strict';
 	
 	interface IApplicationController{
-		route:string;
 		onRouteChanged(): void;
+		onOrientationChange(): void;
+		route:string;
+	}
+	interface IApplicationScope extends ng.IScope{
+		isMenuVertical: boolean;
 	}
 	
+	
 	class ApplicationController implements IApplicationController{
-		
 		public route:string;
 		
 		static $inject =['$scope'];
-		constructor(private scope: ng.IScope){
+		constructor(private scope: IApplicationScope){
 			this.route = 'Not Initialized';
 			this.onRouteChanged();
+			this.onOrientationChange();
 		}
 		
 		onRouteChanged(): void{
-			this.scope.$on('ROUTE-CHANGED', (evt: ng.IAngularEvent,  data:any):void=>{
-				console.log('New Route : ' + data.route);
+			this.scope.$on('AVAM-MENU-ITEM-CHANGED',  (evt: ng.IAngularEvent,  data:any):void=>{
 				this.route=data.route;
 			});
 		}
+		onOrientationChange(): void{
+			this.scope.isMenuVertical =true;
+			this.scope.$on('AVAM-MENU-ORIENTATION-CHANGED',  (evt: ng.IAngularEvent,  data:any):void=>{
+				this.scope.isMenuVertical=data.isVertical;
+			});
+		}
+		
 	}
 	
 	angular.module("avam").controller('appController', ApplicationController);

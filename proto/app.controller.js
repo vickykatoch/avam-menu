@@ -8,12 +8,19 @@ var avam;
                 this.scope = scope;
                 this.route = 'Not Initialized';
                 this.onRouteChanged();
+                this.onOrientationChange();
             }
             ApplicationController.prototype.onRouteChanged = function () {
                 var _this = this;
-                this.scope.$on('ROUTE-CHANGED', function (evt, data) {
-                    console.log('New Route : ' + data.route);
+                this.scope.$on('AVAM-MENU-ITEM-CHANGED', function (evt, data) {
                     _this.route = data.route;
+                });
+            };
+            ApplicationController.prototype.onOrientationChange = function () {
+                var _this = this;
+                this.scope.isMenuVertical = true;
+                this.scope.$on('AVAM-MENU-ORIENTATION-CHANGED', function (evt, data) {
+                    _this.scope.isMenuVertical = data.isVertical;
                 });
             };
             ApplicationController.$inject = ['$scope'];

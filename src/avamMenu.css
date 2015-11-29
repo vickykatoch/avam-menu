@@ -3,10 +3,18 @@
 	background-color: #333;
 	color: #ccc;
 	padding-left: 0;
+}
+.avam-menu-panel-horizontal{
+	width: 100%;
+	height:40px;
+}
+.avam-menu-panel-vertical{
 	width: 200px;
 	min-height: 100vh;
-	padding-top: 30px;
+	padding-top: 30px;	
 }
+
+
 
 .avam-menu-panel .btn:hover{
 	color: #ccc;
@@ -30,6 +38,14 @@
 .avam-selectable-item{
 	
 }
+.avam-menu-item-horizontal{
+	display: inline-block;
+	width:200px !important;
+	margin-left: 20px;
+	margin-top:5px;
+	line-height: 1.5em !important; 
+}
+
 .avam-selectable-item:hover{
 	background-color: #555;
 }
@@ -47,4 +63,26 @@
 	display: inline-block;
 	width:90%;
 	padding-left: 16px;
+}
+.avam-menu-active-indicator{
+	float: right;
+	color: #ddd;
+	margin-right: 0;
+	margin-top: 12px;
+}
+.avam-menu-group-indicator{
+	float: right;
+	color: #ddd;
+	margin-right: 2px;
+	margin-top: 15px;
+}
+.avam-sub-menu{
+	padding-left: 15px;
+}
+.avam-layout-btn{
+	margin: 12px;
+	padding: 2px 8px;
+	color:#bbb;
+	background-color: #333;
+	border: 1px solid #999;
 }

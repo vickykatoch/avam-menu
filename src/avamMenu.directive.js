@@ -3,34 +3,44 @@ var avam;
     var menu;
     (function (menu) {
         var AvamaMenuController = (function () {
-            function AvamaMenuController($scope, rootScope) {
-                this.$scope = $scope;
+            function AvamaMenuController(scope, rootScope) {
+                var _this = this;
+                this.scope = scope;
                 this.rootScope = rootScope;
+                scope.toggleMenuOrientation = function () {
+                    scope.isVertical = !scope.isVertical;
+                    _this.rootScope.$broadcast('AVAM-MENU-ORIENTATION-CHANGED', {
+                        isVertical: scope.isVertical
+                    });
+                };
             }
             AvamaMenuController.prototype.setActiveElement = function (elem) {
                 this.activeElement = elem;
             };
+            AvamaMenuController.prototype.getActiveElement = function () {
+                return this.activeElement;
+            };
             AvamaMenuController.prototype.setRoute = function (route) {
-                this.rootScope.$broadcast('ROUTE-CHANGED', {
+                this.rootScope.$broadcast('AVAM-MENU-ITEM-CHANGED', {
                     route: route
                 });
             };
             AvamaMenuController.$inject = ['$scope', '$rootScope'];
             return AvamaMenuController;
         })();
-        var avamMenuDirective = (function () {
-            function avamMenuDirective() {
+        var AvamMenuDirective = (function () {
+            function AvamMenuDirective() {
                 this.transclude = true;
                 this.scope = {};
                 this.controller = AvamaMenuController;
                 this.templateUrl = './src/avamMenu.template.html';
             }
-            avamMenuDirective.instance = function () {
-                return new avamMenuDirective;
+            AvamMenuDirective.instance = function () {
+                return new AvamMenuDirective;
             };
-            return avamMenuDirective;
+            return AvamMenuDirective;
         })();
-        angular.module("avam-menu").directive("avamMenu", avamMenuDirective.instance);
+        angular.module("avam-menu").directive("avamMenu", AvamMenuDirective.instance);
     })(menu = avam.menu || (avam.menu = {}));
 })(avam || (avam = {}));
 //# sourceMappingURL=avamMenu.directive.js.map

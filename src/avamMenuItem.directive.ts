@@ -1,34 +1,13 @@
 module avam.menu{
 	
-	
-	
-	// class avamMenuItemLink implements ng.IDirectiveLinkFn{
-		
-	// 	// scope: IScope,
-	// 	// instanceElement: IAugmentedJQuery,
-	// 	// instanceAttributes: IAttributes,
-	// 	// controller: {},
-	// 	// transclude: ITranscludeFunction
-	// }
-	
-	// interface IAvamMenuController {
-	// 	toggleVisibility():void;
-	// }
-	// class AvamMenuController implements IAvamMenuController{
-	// 	static $inject =['$scope'];
-	// 	constructor(private $scope: ng.IScope){
-			
-	// 	}
-	// 	toggleVisibility():void {
-			
-	// 	}
-	// }
 	interface IAttributes extends ng.IAttributes{
 		label : string;
 		icon: string;
 		route:string;
 	}
-	
+	interface IItemScope extends ng.IScope{
+		isActive(): boolean;
+	}
 	
 	class AvamMenuItemDirective implements ng.IDirective{
 		static instance() : ng.IDirective{
@@ -41,13 +20,19 @@ module avam.menu{
 			route:'@'
 		};
 		templateUrl = './src/avamMenuItem.template.html';	
-		link(scope : ng.IScope, elem : ng.IAugmentedJQuery, attributes : IAttributes, 
-				controller : IAvamMenuController) : void {
+		link(scope : IItemScope, elem : ng.IAugmentedJQuery, attributes : IAttributes, 
+				controller : IAvamMenuController) : void {		
+			
+			scope.isActive= ():boolean=>{
+				return elem === controller.getActiveElement();
+			}
 			elem.on('click',(evt:UIEvent):void=>{
 				evt.stopPropagation();
 				evt.preventDefault();
-				controller.setActiveElement(elem);
-				controller.setRoute(attributes.route);
+				scope.$apply(():void=>{
+					controller.setActiveElement(elem);
+					controller.setRoute(attributes.route);
+				});
 			});
 		}
 		

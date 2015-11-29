@@ -1,0 +1,50 @@
+.avam-menu-panel{
+	position: relative;
+	background-color: #333;
+	color: #ccc;
+	padding-left: 0;
+	width: 200px;
+	min-height: 100vh;
+	padding-top: 30px;
+}
+
+.avam-menu-panel .btn:hover{
+	color: #ccc;
+}
+.avam-menu-panel ul{
+	padding-left: 0;
+}
+.avam-menu {
+	list-style-type: none;
+	vertical-align: top;
+}
+.avam-menu ul{
+	display: inline;
+	list-style-type: none;
+	padding-left: 0;
+}
+.avam-menu li {
+	line-height: 3em;
+	cursor: pointer;
+}
+.avam-selectable-item{
+	
+}
+.avam-selectable-item:hover{
+	background-color: #555;
+}
+.avam-noselect{
+	-webkit-touch-callout:none;
+	-webkit-user-select: none;
+	-moz-user-select : none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.avam-menu-icon{
+	margin-right: 10px;
+}
+.avam-menu li div{
+	display: inline-block;
+	width:90%;
+	padding-left: 16px;
+}

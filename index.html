@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="avam">
+
+<head>
+	<title>AVAM Menu</title>
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="src/avamMenu.css">
+</head>
+
+<body class="container-fluid">
+	<div>
+		<h1>Avam Menu Demo</h1>
+		
+	</div>
+	<div ng-controller="appController as vm">
+		<avam-menu>
+			<avam-menu-item label="Dashboard" icon="glyphicon-dashboard" route="Dashboard"></avam-menu-item>
+			<avam-menu-item label="Income Statement" icon="glyphicon-phone"  route="Income Statement"></avam-menu-item>
+			<avam-menu-item label="Help" icon="glyphicon-phone-alt"  route="Help"></avam-menu-item>
+		</avam-menu>
+		<div style="position:absolute; left:300px; top: 200px; color:red">
+			{{vm.route}}
+		</div>
+	</div>
+	
+	<script src="lib/jquery/dist/jquery.js"></script>
+	<script src="lib/angular/angular.js"></script>
+
+	<!--AVAM MENU SCRIPT FILES-->
+	<script src="src/avamMenu.module.js"></script>
+	<script src="src/avamMenu.directive.js"></script>
+	<script src="src/avamMenuItem.directive.js"></script>
+
+
+
+	<script src="proto/app.js"></script>
+	<script src="proto/app.controller.js"></script>
+</body>
+
+</html>

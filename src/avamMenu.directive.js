@@ -48,7 +48,7 @@ var avam;
                 return new AvamMenuDirective;
             };
             AvamMenuDirective.prototype.link = function (scope, elem, attribs) {
-                scope.allowToggle = attribs.allowToggle;
+                scope.allowToggle = attribs.allowToggle && attribs.allowToggle === 'true';
             };
             return AvamMenuDirective;
         })();

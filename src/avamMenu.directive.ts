@@ -14,7 +14,7 @@ module avam.menu{
 		allowToggle:boolean;
 	}
 	interface IExternalAttributes extends ng.IAttributes{
-		allowToggle:boolean;
+		allowToggle:string;
 	}
 	class AvamaMenuController implements IAvamMenuController{Í
 		private activeElement:ng.IAugmentedJQuery;
@@ -61,7 +61,7 @@ module avam.menu{
 		controller = AvamaMenuController;
 		templateUrl = './src/avamMenu.template.html';
 		link(scope: IMenuControllerScope,elem : ng.IAugmentedJQuery, attribs: IExternalAttributes):void {
-			scope.allowToggle = attribs.allowToggle;
+			scope.allowToggle = attribs.allowToggle  && attribs.allowToggle  ==='true';
 		}			
 	}
 	angular.module("avam-menu").directive("avamMenu", AvamMenuDirective.instance);

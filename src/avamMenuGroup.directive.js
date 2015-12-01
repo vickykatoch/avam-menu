@@ -21,7 +21,11 @@ var avam;
                 scope.onToggleSubMenu = function () {
                     scope.isOpen = !scope.isOpen;
                 };
+                scope.isVertical = function () {
+                    return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
+                };
             };
+            ;
             return AvamMenuGroupDirective;
         })();
         angular.module("avam-menu").directive("avamMenuGroup", AvamMenuGroupDirective.instance);

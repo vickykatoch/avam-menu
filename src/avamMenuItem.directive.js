@@ -17,7 +17,10 @@ var avam;
             };
             AvamMenuItemDirective.prototype.link = function (scope, elem, attributes, controller) {
                 scope.isActive = function () {
-                    return elem === controller.getActiveElement();
+                    return elem === controller.getActiveElement() && controller.isVertical();
+                };
+                scope.isVertical = function () {
+                    return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
                 };
                 elem.on('click', function (evt) {
                     evt.stopPropagation();

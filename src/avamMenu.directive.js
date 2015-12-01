@@ -7,6 +7,7 @@ var avam;
                 var _this = this;
                 this.scope = scope;
                 this.rootScope = rootScope;
+                scope.isVertical = true;
                 scope.toggleMenuOrientation = function () {
                     scope.isVertical = !scope.isVertical;
                     _this.rootScope.$broadcast('AVAM-MENU-ORIENTATION-CHANGED', {
@@ -24,6 +25,9 @@ var avam;
                 this.rootScope.$broadcast('AVAM-MENU-ITEM-CHANGED', {
                     route: route
                 });
+            };
+            AvamaMenuController.prototype.isVertical = function () {
+                return this.scope.isVertical;
             };
             AvamaMenuController.$inject = ['$scope', '$rootScope'];
             return AvamaMenuController;

@@ -2,8 +2,8 @@ module avam.menu{
 	export interface IAvamMenuController {
 		setActiveElement(elem: ng.IAugmentedJQuery):void;
 		getActiveElement() : ng.IAugmentedJQuery;
+		isVertical():boolean;
 		setRoute(route: string) : void;
-		
 	}
 	
 	interface IScopedItem extends ng.IScope{
@@ -17,6 +17,7 @@ module avam.menu{
 		
 		static $inject =['$scope', '$rootScope'];
 		constructor(private scope : IScopedItem, private rootScope: ng.IRootScopeService){
+			scope.isVertical =true;
 			scope.toggleMenuOrientation = ():void => {
 				scope.isVertical = !scope.isVertical;
 				this.rootScope.$broadcast('AVAM-MENU-ORIENTATION-CHANGED',{
@@ -36,7 +37,9 @@ module avam.menu{
 				route:route
 			});
 		}
-		
+		isVertical():boolean{
+			return this.scope.isVertical;
+		}
 	}
 	
 	class AvamMenuDirective implements ng.IDirective{

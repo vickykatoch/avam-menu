@@ -9,6 +9,7 @@ var avam;
                 this.route = 'Not Initialized';
                 this.onRouteChanged();
                 this.onOrientationChange();
+                scope.isMenuVertical = false;
             }
             ApplicationController.prototype.onRouteChanged = function () {
                 var _this = this;
@@ -18,7 +19,6 @@ var avam;
             };
             ApplicationController.prototype.onOrientationChange = function () {
                 var _this = this;
-                this.scope.isMenuVertical = true;
                 this.scope.$on('AVAM-MENU-ORIENTATION-CHANGED', function (evt, data) {
                     _this.scope.isMenuVertical = data.isVertical;
                 });

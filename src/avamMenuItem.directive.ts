@@ -7,6 +7,7 @@ module avam.menu{
 	}
 	interface IItemScope extends ng.IScope{
 		isActive(): boolean;
+		isVertical():boolean;
 	}
 	
 	class AvamMenuItemDirective implements ng.IDirective{
@@ -24,7 +25,10 @@ module avam.menu{
 				controller : IAvamMenuController) : void {		
 			
 			scope.isActive= ():boolean=>{
-				return elem === controller.getActiveElement();
+				return elem === controller.getActiveElement() && controller.isVertical();
+			}
+			scope.isVertical =():boolean=>{
+				return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
 			}
 			elem.on('click',(evt:UIEvent):void=>{
 				evt.stopPropagation();

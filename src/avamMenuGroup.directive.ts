@@ -5,6 +5,7 @@ module avam.menu{
 		icon: string;
 		isOpen: boolean;
 		onToggleSubMenu()(): void;
+		isVertical():boolean;
 	}
 	
 	
@@ -19,14 +20,16 @@ module avam.menu{
 			icon: '@'
 		};
 		templateUrl = './src/avamMenuGroup.template.html';	
-		link(scope : ng.IScope , elem : ng.IAugmentedJQuery, attributes : IAttributes, 
+		link(scope : IItemScope , elem : ng.IAugmentedJQuery, attributes : IAttributes, 
 				controller : IAvamMenuController) : void {	
 					scope.isOpen = false;
 					scope.onToggleSubMenu = ():void=>{
 						scope.isOpen=!scope.isOpen;
 					}
-					
-				}		
+					scope.isVertical =():boolean=>{
+						return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
+					}
+				};	
 	}
 	angular.module("avam-menu").directive("avamMenuGroup", AvamMenuGroupDirective.instance);
 	

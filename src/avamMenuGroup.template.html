@@ -1,12 +1,14 @@
 <li class="avam-selectable-item" ng-click="onToggleSubMenu()"
-	ng-class="{'avam-menu-item-horizontal' : !isVertical}">
+	ng-class="{'avam-menu-item-horizontal' : !isVertical()}">
 	<div class="avam-noselect">
 		<i class="glyphicon {{icon}} avam-menu-icon"></i>
 		{{label}}
 		<i class="glyphicon glyphicon-menu-left avam-menu-group-indicator"
-			ng-class="{'glyphicon-menu-down' : isOpen}"></i>
+			ng-class="{'glyphicon-menu-down' : isOpen}"
+			ng-show="isVertical()"
+			></i>
 	</div>
 </li>
-<div ng-show="isOpen" class="avam-sub-menu">
+<div ng-show="isOpen" class="avam-sub-menu" ng-class="{'avam-drop-down-menu' :  isVertical()}">
 	<ul ng-transclude></ul>
 </div>

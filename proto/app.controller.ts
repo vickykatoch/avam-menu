@@ -19,6 +19,7 @@ module avam.proto{
 			this.route = 'Not Initialized';
 			this.onRouteChanged();
 			this.onOrientationChange();
+			scope.isMenuVertical=false;
 		}
 		
 		onRouteChanged(): void{
@@ -27,7 +28,6 @@ module avam.proto{
 			});
 		}
 		onOrientationChange(): void{
-			this.scope.isMenuVertical =true;
 			this.scope.$on('AVAM-MENU-ORIENTATION-CHANGED',  (evt: ng.IAngularEvent,  data:any):void=>{
 				this.scope.isMenuVertical=data.isVertical;
 			});

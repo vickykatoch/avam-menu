@@ -6,7 +6,9 @@
 }
 .avam-menu-panel-horizontal{
 	width: 100%;
-	height:40px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	/*height:40px;*/
 }
 .avam-menu-panel-vertical{
 	width: 200px;
@@ -14,13 +16,12 @@
 	padding-top: 30px;	
 }
 
-
-
 .avam-menu-panel .btn:hover{
 	color: #ccc;
 }
 .avam-menu-panel ul{
 	padding-left: 0;
+	margin-bottom: 0;
 }
 .avam-menu {
 	list-style-type: none;
@@ -40,10 +41,13 @@
 }
 .avam-menu-item-horizontal{
 	display: inline-block;
-	width:200px !important;
+	width:180px;
+	/*padding-top: 5px;
+	padding-bottom: 5px;*/
+	/*width:180px !important;
 	margin-left: 20px;
-	margin-top:5px;
-	line-height: 1.5em !important; 
+    margin-top: 5px;
+    line-height: 1.5em !important;*/
 }
 
 .avam-selectable-item:hover{
@@ -81,8 +85,20 @@
 }
 .avam-layout-btn{
 	margin: 12px;
-	padding: 2px 8px;
+	padding: 2px 10px;
 	color:#bbb;
 	background-color: #333;
 	border: 1px solid #999;
+}
+.avam-layout-btn-horizontal{
+	position: absolute;
+    /*top: -6px;*/
+    right: 10px;
+}
+.avam-drop-down-menu{
+	position: absolute;
+	z-index: 1000;
+    background-color: #333;
+    width: 200px;
+    padding-left: 0;
 }

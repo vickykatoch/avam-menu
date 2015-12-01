@@ -2,6 +2,8 @@
 	ng-class="{'avam-menu-panel-horizontal' : !isVertical, 'avam-menu-panel-vertical' : isVertical}">
 	<ul class="avam-menu" ng-transclude>
 	</ul>
-	<a class="btn glyphicon glyphicon-menu-left avam-layout-btn" ng-click="toggleMenuOrientation()">
+	<a class="btn glyphicon glyphicon-menu-left avam-layout-btn" 
+		ng-class="{'avam-layout-btn-horizontal' : !isVertical}"
+		ng-click="toggleMenuOrientation()">
 	</a>
 </div>

@@ -29,18 +29,26 @@ var avam;
             AvamaMenuController.prototype.isVertical = function () {
                 return this.scope.isVertical;
             };
+            AvamaMenuController.prototype.setGroupMenuScope = function (groupMenuItemScope) {
+                this.scope.groupMenuItemScope = groupMenuItemScope;
+            };
             AvamaMenuController.$inject = ['$scope', '$rootScope'];
             return AvamaMenuController;
         })();
         var AvamMenuDirective = (function () {
             function AvamMenuDirective() {
                 this.transclude = true;
-                this.scope = {};
+                this.scope = {
+                    allowToggle: '@'
+                };
                 this.controller = AvamaMenuController;
                 this.templateUrl = './src/avamMenu.template.html';
             }
             AvamMenuDirective.instance = function () {
                 return new AvamMenuDirective;
+            };
+            AvamMenuDirective.prototype.link = function (scope, elem, attribs) {
+                scope.allowToggle = attribs.allowToggle;
             };
             return AvamMenuDirective;
         })();

@@ -20,9 +20,13 @@ var avam;
                 scope.isOpen = false;
                 scope.onToggleSubMenu = function () {
                     scope.isOpen = !scope.isOpen;
+                    controller.setGroupMenuScope(scope);
                 };
                 scope.isVertical = function () {
                     return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
+                };
+                scope.closeMenu = function () {
+                    scope.isOpen = false;
                 };
             };
             ;

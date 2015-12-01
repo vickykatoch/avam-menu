@@ -3,20 +3,25 @@ module avam.menu{
 		setActiveElement(elem: ng.IAugmentedJQuery):void;
 		getActiveElement() : ng.IAugmentedJQuery;
 		isVertical():boolean;
-		setRoute(route: string) : void;
+		setRoute(route: string) : void
+		setGroupMenuScope(groupMenuItemScope: IGroupMenuItemScope):void;
 	}
 	
-	interface IScopedItem extends ng.IScope{
+	interface IMenuControllerScope extends ng.IScope{
 		toggleMenuOrientation():void;
 		isVertical : boolean;
+		groupMenuItemScope: IGroupMenuItemScope;
+		allowToggle:boolean;
 	}
-	
+	interface IExternalAttributes extends ng.IAttributes{
+		allowToggle:boolean;
+	}
 	class AvamaMenuController implements IAvamMenuController{Í
 		private activeElement:ng.IAugmentedJQuery;
 		private route: string;
 		
 		static $inject =['$scope', '$rootScope'];
-		constructor(private scope : IScopedItem, private rootScope: ng.IRootScopeService){
+		constructor(private scope : IMenuControllerScope, private rootScope: ng.IRootScopeService){
 			scope.isVertical =true;
 			scope.toggleMenuOrientation = ():void => {
 				scope.isVertical = !scope.isVertical;
@@ -40,6 +45,9 @@ module avam.menu{
 		isVertical():boolean{
 			return this.scope.isVertical;
 		}
+		setGroupMenuScope(groupMenuItemScope: IGroupMenuItemScope):void{
+			this.scope.groupMenuItemScope=groupMenuItemScope;
+		}
 	}
 	
 	class AvamMenuDirective implements ng.IDirective{
@@ -48,10 +56,13 @@ module avam.menu{
 		}
 		transclude=true;
 		scope = {
-			
+			allowToggle:'@'
 		};
 		controller = AvamaMenuController;
-		templateUrl = './src/avamMenu.template.html';			
+		templateUrl = './src/avamMenu.template.html';
+		link(scope: IMenuControllerScope,elem : ng.IAugmentedJQuery, attribs: IExternalAttributes):void {
+			scope.allowToggle = attribs.allowToggle;
+		}			
 	}
 	angular.module("avam-menu").directive("avamMenu", AvamMenuDirective.instance);
 }

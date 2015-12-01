@@ -21,7 +21,7 @@ module avam.menu{
 			scope.toggleMenuOrientation = ():void => {
 				scope.isVertical = !scope.isVertical;
 				this.rootScope.$broadcast('AVAM-MENU-ORIENTATION-CHANGED',{
-					isVertical : scope.isVertical;
+					isVertical : scope.isVertical
 				} );
 			}
 		}

@@ -4,7 +4,7 @@ module avam.menu{
 		label: string;
 		icon: string;
 		isOpen: boolean;
-		onToggleSubMenu()(): void;
+		onToggleSubMenu(): void;
 		isVertical():boolean;
 	}
 	
@@ -20,7 +20,7 @@ module avam.menu{
 			icon: '@'
 		};
 		templateUrl = './src/avamMenuGroup.template.html';	
-		link(scope : IItemScope , elem : ng.IAugmentedJQuery, attributes : IAttributes, 
+		link(scope : IItemScope , elem : ng.IAugmentedJQuery, attributes : ng.IAttributes, 
 				controller : IAvamMenuController) : void {	
 					scope.isOpen = false;
 					scope.onToggleSubMenu = ():void=>{

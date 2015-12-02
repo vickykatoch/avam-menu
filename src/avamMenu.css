@@ -67,8 +67,11 @@
 }
 .avam-menu li div{
 	display: inline-block;
-	/*width:90%;*/
+	width:90%;
 	padding-left: 16px;
+}
+.avam-menu-item-horizontal div{
+	width:100% !important;
 }
 .avam-menu-active-indicator{
 	float: right;

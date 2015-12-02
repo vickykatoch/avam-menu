@@ -40,7 +40,7 @@ module avam.menu{
 					}
 					scope.setSubMenuPosition = ():void=>{
 						var pos = elem.offset();
-                		$('.avam-sub-menu').css({ 'left': pos.left , 'top': 45 });
+                		$('.avam-sub-menu').css({ 'left': pos.left +5, 'top': 45 });
 					}
 				};	
 	}

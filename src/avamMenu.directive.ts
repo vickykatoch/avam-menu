@@ -75,8 +75,6 @@ module avam.menu{
 		templateUrl = './src/avamMenu.template.html';
 		link(scope: IMenuControllerScope,elem : ng.IAugmentedJQuery, attribs: IExternalAttributes):void {
 			scope.allowMenuToggle = attribs.allowToggle  && attribs.allowToggle  === 'true';
-			
-			
 		}	
 				
 	}

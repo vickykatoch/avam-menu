@@ -6,8 +6,10 @@
 }
 .avam-menu-panel-horizontal{
 	width: 100%;
-	padding-bottom: 5px;
-	padding-top: 5px;
+	/*padding-bottom: 5px;
+	padding-top: 5px;*/
+	vertical-align: middle;
+	line-height: 1.5em;
 	/*height:40px;*/
 }
 .avam-menu-panel-vertical{
@@ -41,13 +43,13 @@
 }
 .avam-menu-item-horizontal{
 	display: inline-block;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	
-	width:180px !important;
-	margin-left: 20px;
-    margin-top: 5px;
-    line-height: 1.5em !important;
+	/*padding-top: 5px;
+	padding-bottom: 5px;*/
+	padding-right: 5px;
+	/*width:180px !important;*/
+	/*margin-left: 20px;
+    margin-top: 5px;*/
+	/*line-height: 1em !important;*/
 }
 
 .avam-selectable-item:hover{
@@ -65,7 +67,7 @@
 }
 .avam-menu li div{
 	display: inline-block;
-	width:90%;
+	/*width:90%;*/
 	padding-left: 16px;
 }
 .avam-menu-active-indicator{
@@ -91,8 +93,8 @@
 	border: 1px solid #999;
 }
 .avam-layout-btn-horizontal{
+	/*margin-top: 0;*/
 	position: absolute;
-    /*top: -6px;*/
     right: 10px;
 }
 .avam-drop-down-menu{

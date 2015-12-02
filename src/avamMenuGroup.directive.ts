@@ -27,9 +27,10 @@ module avam.menu{
 					scope.isOpen = false;
 					scope.onToggleSubMenu = ():void=>{
 						scope.isOpen=!scope.isOpen;
-						controller.setGroupMenuScope(scope);
-						if (elem.parents('.avam-sub-menu').length == 0)
+						if (!scope.isVertical() && elem.parents('.avam-sub-menu').length == 0) {
+							controller.setGroupMenuScope(scope);
                     		scope.setSubMenuPosition();
+						}
 
 					}
 					scope.isVertical =():boolean=>{

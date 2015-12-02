@@ -39,8 +39,9 @@ module avam.menu{
 						scope.isOpen=false;
 					}
 					scope.setSubMenuPosition = ():void=>{
-						var pos = elem.offset();
-                		$('.avam-sub-menu').css({ 'left': pos.left, 'top': 45 });
+						 var pos = elem.offset(), 
+						 top = elem.parents('.avam-menu-panel').height();
+                        $('.avam-sub-menu').css({ 'left': pos.left, 'top': top });
 					}
 				};	
 	}

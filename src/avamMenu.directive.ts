@@ -26,7 +26,7 @@ module avam.menu{
 			scope.isVertical =true;
 			$(document).click((evt: JQueryEventObject):void=>{
 					if( scope.allowMenuToggle && scope.groupMenuItemScope && !scope.isVertical){
-						if ($(evt.target).parent().hasClass('avam-selectable-item')){
+						if ($(evt.target).parent().hasClass('avam-group-menu')){
 							return;
 						}	
 						scope.$apply(()=>{

@@ -31,8 +31,8 @@ module avam.menu{
 				return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
 			}
 			elem.on('click',(evt:UIEvent):void=>{
-				evt.stopPropagation();
-				evt.preventDefault();
+				//evt.stopPropagation();
+				//evt.preventDefault();
 				scope.$apply(():void=>{
 					controller.setActiveElement(elem);
 					controller.setRoute(attributes.route);

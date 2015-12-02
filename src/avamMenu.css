@@ -41,13 +41,13 @@
 }
 .avam-menu-item-horizontal{
 	display: inline-block;
-	width:180px;
-	/*padding-top: 5px;
-	padding-bottom: 5px;*/
-	/*width:180px !important;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+	width:180px !important;
 	margin-left: 20px;
     margin-top: 5px;
-    line-height: 1.5em !important;*/
+    line-height: 1.5em !important;
 }
 
 .avam-selectable-item:hover{

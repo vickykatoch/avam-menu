@@ -11,7 +11,7 @@ module avam.menu{
 		toggleMenuOrientation():void;
 		isVertical : boolean;
 		groupMenuItemScope: IGroupMenuItemScope;
-		allowToggle:boolean;
+		allowMenuToggle:boolean;
 	}
 	interface IExternalAttributes extends ng.IAttributes{
 		allowToggle:string;
@@ -23,6 +23,19 @@ module avam.menu{
 		static $inject =['$scope', '$rootScope'];
 		constructor(private scope : IMenuControllerScope, private rootScope: ng.IRootScopeService){
 			scope.isVertical =true;
+			$(document).click((evt: JQueryEventObject):void=>{
+					if( scope.allowMenuToggle && scope.groupMenuItemScope && !scope.isVertical){
+						if ($(evt.target).parent().hasClass('avam-selectable-item')){
+							return;
+						}	
+						scope.$apply(()=>{
+							scope.groupMenuItemScope.closeMenu();
+							evt.preventDefault();
+							evt.stopPropagation();
+						})
+					}	
+				});
+			
 			scope.toggleMenuOrientation = ():void => {
 				scope.isVertical = !scope.isVertical;
 				this.rootScope.$broadcast('AVAM-MENU-ORIENTATION-CHANGED',{
@@ -61,8 +74,11 @@ module avam.menu{
 		controller = AvamaMenuController;
 		templateUrl = './src/avamMenu.template.html';
 		link(scope: IMenuControllerScope,elem : ng.IAugmentedJQuery, attribs: IExternalAttributes):void {
-			scope.allowToggle = attribs.allowToggle  && attribs.allowToggle  ==='true';
-		}			
+			scope.allowMenuToggle = attribs.allowToggle  && attribs.allowToggle  === 'true';
+			
+			
+		}	
+				
 	}
 	angular.module("avam-menu").directive("avamMenu", AvamMenuDirective.instance);
 }

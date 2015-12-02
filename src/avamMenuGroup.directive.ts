@@ -7,6 +7,7 @@ module avam.menu{
 		onToggleSubMenu(): void;
 		isVertical():boolean;
 		closeMenu():void;
+		setSubMenuPosition():void;
 	}
 	
 	
@@ -27,12 +28,19 @@ module avam.menu{
 					scope.onToggleSubMenu = ():void=>{
 						scope.isOpen=!scope.isOpen;
 						controller.setGroupMenuScope(scope);
+						if (elem.parents('.avam-sub-menu').length == 0)
+                    		scope.setSubMenuPosition();
+
 					}
 					scope.isVertical =():boolean=>{
 						return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
 					}
 					scope.closeMenu=():void=>{
 						scope.isOpen=false;
+					}
+					scope.setSubMenuPosition = ():void=>{
+						var pos = elem.offset();
+                		$('.avam-sub-menu').css({ 'left': pos.left , 'top': 45 });
 					}
 				};	
 	}

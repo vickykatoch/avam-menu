@@ -8,6 +8,18 @@ var avam;
                 this.scope = scope;
                 this.rootScope = rootScope;
                 scope.isVertical = true;
+                $(document).click(function (evt) {
+                    if (scope.allowMenuToggle && scope.groupMenuItemScope && !scope.isVertical) {
+                        if ($(evt.target).parent().hasClass('avam-selectable-item')) {
+                            return;
+                        }
+                        scope.$apply(function () {
+                            scope.groupMenuItemScope.closeMenu();
+                            evt.preventDefault();
+                            evt.stopPropagation();
+                        });
+                    }
+                });
                 scope.toggleMenuOrientation = function () {
                     scope.isVertical = !scope.isVertical;
                     _this.rootScope.$broadcast('AVAM-MENU-ORIENTATION-CHANGED', {
@@ -48,7 +60,7 @@ var avam;
                 return new AvamMenuDirective;
             };
             AvamMenuDirective.prototype.link = function (scope, elem, attribs) {
-                scope.allowToggle = attribs.allowToggle && attribs.allowToggle === 'true';
+                scope.allowMenuToggle = attribs.allowToggle && attribs.allowToggle === 'true';
             };
             return AvamMenuDirective;
         })();

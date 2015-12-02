@@ -20,7 +20,7 @@ module avam.menu{
 			icon:'@',
 			route:'@'
 		};
-		templateUrl = './src/avamMenuItem.template.html';	
+		templateUrl = 'src/avamMenuItem.template.html';	
 		link(scope : IItemScope, elem : ng.IAugmentedJQuery, attributes : IAttributes, 
 				controller : IAvamMenuController) : void {		
 			
@@ -38,8 +38,7 @@ module avam.menu{
 					controller.setRoute(attributes.route);
 				});
 			});
-		}
-		
+		}		
 	}
 	angular.module("avam-menu").directive("avamMenuItem", AvamMenuItemDirective.instance);
 }	

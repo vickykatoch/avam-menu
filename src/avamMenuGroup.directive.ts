@@ -21,7 +21,7 @@ module avam.menu{
 			label:'@',
 			icon: '@'
 		};
-		templateUrl = './src/avamMenuGroup.template.html';	
+		templateUrl = 'src/avamMenuGroup.template.html';	
 		link(scope : IGroupMenuItemScope , elem : ng.IAugmentedJQuery, attributes : ng.IAttributes, 
 				controller : IAvamMenuController) : void {	
 					scope.isOpen = false;

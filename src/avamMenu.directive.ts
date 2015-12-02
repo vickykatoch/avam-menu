@@ -15,8 +15,9 @@ module avam.menu{
 	}
 	interface IExternalAttributes extends ng.IAttributes{
 		allowToggle:string;
+		orientation:string;
 	}
-	class AvamaMenuController implements IAvamMenuController{Í
+	class AvamaMenuController implements IAvamMenuController{
 		private activeElement:ng.IAugmentedJQuery;
 		private route: string;
 		
@@ -44,6 +45,7 @@ module avam.menu{
 			}
 		}
 		
+		
 		setActiveElement(elem: ng.IAugmentedJQuery):void{
 			this.activeElement=elem;
 		}
@@ -69,12 +71,14 @@ module avam.menu{
 		}
 		transclude=true;
 		scope = {
-			allowToggle:'@'
+			allowToggle:'@',
+			orientation:'@'
 		};
 		controller = AvamaMenuController;
-		templateUrl = './src/avamMenu.template.html';
+		templateUrl = 'src/avamMenu.template.html';
 		link(scope: IMenuControllerScope,elem : ng.IAugmentedJQuery, attribs: IExternalAttributes):void {
 			scope.allowMenuToggle = attribs.allowToggle  && attribs.allowToggle  === 'true';
+			scope.isVertical = attribs.orientation && attribs.orientation === "vertical";
 		}	
 				
 	}

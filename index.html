@@ -9,11 +9,11 @@
 
 <body class="container-fluid" ng-controller="appController as vm">
 	<div>
-		<h1>Avam Menu Demo</h1>
+		<h1>...</h1>
 		
 	</div>
 	<div >
-		<avam-menu allow-toggle="true">
+		<avam-menu allow-toggle="true" orientation="horizontal">
 			<avam-menu-item label="Dashboard" icon="glyphicon-dashboard" route="Dashboard"></avam-menu-item>
 			<avam-menu-item label="Income Statement" icon="glyphicon-phone"  route="Income Statement"></avam-menu-item>
 			<avam-menu-item label="Help" icon="glyphicon-phone-alt"  route="Help"></avam-menu-item>
@@ -32,13 +32,14 @@
 	<script src="lib/jquery/dist/jquery.js"></script>
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular-animate/angular-animate.js"></script>
-
+	
 	<!--AVAM MENU SCRIPT FILES-->
-	<script src="src/avamMenu.module.js"></script>
-	<script src="src/avamMenu.directive.js"></script>
-	<script src="src/avamMenuItem.directive.js"></script>
-	<script src="src/avamMenuGroup.directive.js"></script>
-
+	<!--<script src="dist/avamMenu.module.js"></script>
+	<script src="dist/avamMenu.directive.js"></script>
+	<script src="dist/avamMenuItem.directive.js"></script>
+	<script src="dist/avamMenuGroup.directive.js"></script>-->
+	
+	<script src="dist/avam-menu.js"></script>
 
 	<script src="proto/app.js"></script>
 	<script src="proto/app.controller.js"></script>

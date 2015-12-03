@@ -23,8 +23,8 @@ var avam;
                     return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
                 };
                 elem.on('click', function (evt) {
-                    evt.stopPropagation();
-                    evt.preventDefault();
+                    //evt.stopPropagation();
+                    //evt.preventDefault();
                     scope.$apply(function () {
                         controller.setActiveElement(elem);
                         controller.setRoute(attributes.route);

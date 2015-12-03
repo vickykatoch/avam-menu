@@ -20,9 +20,10 @@ var avam;
                 scope.isOpen = false;
                 scope.onToggleSubMenu = function () {
                     scope.isOpen = !scope.isOpen;
-                    controller.setGroupMenuScope(scope);
-                    if (elem.parents('.avam-sub-menu').length == 0)
+                    if (!scope.isVertical() && elem.parents('.avam-sub-menu').length == 0) {
+                        controller.setGroupMenuScope(scope);
                         scope.setSubMenuPosition();
+                    }
                 };
                 scope.isVertical = function () {
                     return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
@@ -31,8 +32,8 @@ var avam;
                     scope.isOpen = false;
                 };
                 scope.setSubMenuPosition = function () {
-                    var pos = elem.offset();
-                    $('.avam-sub-menu').css({ 'left': pos.left, 'top': 45 });
+                    var pos = elem.offset(), top = elem.parents('.avam-menu-panel').height();
+                    $('.avam-sub-menu').css({ 'left': pos.left, 'top': top });
                 };
             };
             ;

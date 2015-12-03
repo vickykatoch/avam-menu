@@ -5,3 +5,8 @@ node ./node_modules/gulp/bin/gulp.js build
 
 when files are deleted: 
 git commit -a -m "message"
+
+git config credential.helper store 
+git config credential.helper remove
+
+aryaadi3020@gm/K@

@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     templateCache = require('gulp-angular-templatecache'),
     uglify = require('gulp-uglify'),
     del = require('del'),
+    minifyCss = require('gulp-minify-css'),
     gulpConfig = new Config();
 
 
@@ -18,8 +19,11 @@ gulp.task('build',['clean', 'compile:js'], function(){
 });
 
 gulp.task('watch', function() {
-    gulp.watch(gulpConfig.typeScriptSourceFiles, ['build']);
-  //gulp.watch(paths.images, ['images']);
+    var files = [
+          gulpConfig.typeScriptSourceFiles,
+          gulpConfig.cssPath
+    ];
+    gulp.watch(files, ['build','compile:css']);
 });
 
 
@@ -52,4 +56,10 @@ gulp.task('compile:tcache', function(){
                 module : gulpConfig.moduleName
             }))
             .pipe(gulp.dest(gulpConfig.outputPath));       
+});
+
+gulp.task('compile:css', function(){
+    return gulp.src(gulpConfig.cssPath)
+            .pipe(minifyCss())
+            .pipe(gulp.dest(gulpConfig.outputPath)); 
 });

@@ -8,6 +8,7 @@ var GulpConfig = (function () {
         this.templatePath = "./src/*.html";
         this.jsFilePath = "./dist/*.js";
         this.moduleName = 'avam-menu';
+        this.cssPath = './src/*.css';
     }
     return gulpConfig;
 })();

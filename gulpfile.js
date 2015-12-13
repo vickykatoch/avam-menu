@@ -14,7 +14,7 @@ gulp.task('clean', function(cb){
     del(['dist'], cb);
 });
 
-gulp.task('build',['clean', 'compile:js'], function(){
+gulp.task('build',['clean', 'compile:js','compile:css'], function(){
     return gulp.src(gulpConfig.jsFilePath);
 });
 
@@ -23,7 +23,7 @@ gulp.task('watch', function() {
           gulpConfig.typeScriptSourceFiles,
           gulpConfig.cssPath
     ];
-    gulp.watch(files, ['build','compile:css']);
+    gulp.watch(files, ['build']);
 });
 
 
@@ -59,6 +59,7 @@ gulp.task('compile:tcache', function(){
 });
 
 gulp.task('compile:css', function(){
+    console.log('CSS Module : ' + gulpConfig.cssPath);
     return gulp.src(gulpConfig.cssPath)
             .pipe(minifyCss())
             .pipe(gulp.dest(gulpConfig.outputPath)); 

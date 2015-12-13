@@ -34,7 +34,7 @@ module avam.menu{
 
 					}
 					scope.isVertical =():boolean=>{
-						return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
+						return controller.isMenuVertical() || elem.parents('.avam-sub-menu').length > 0;
 					}
 					scope.closeMenu=():void=>{
 						scope.isOpen=false;

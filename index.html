@@ -10,15 +10,14 @@
 <body class="container-fluid" ng-controller="appController as vm">
 	<div>
 		<h1>...</h1>
-		
+		<button ng-click="vm.toggleMenu()">Toggle Menu Visibility</button>
 	</div>
 	<div >
 		<avam-menu allow-toggle="true" orientation="horizontal">
 			<avam-menu-item label="Dashboard" icon="glyphicon-dashboard" route="Dashboard"></avam-menu-item>
 			<avam-menu-item label="Income Statement" icon="glyphicon-phone"  route="Income Statement"></avam-menu-item>
 			<avam-menu-item label="Help" icon="glyphicon-phone-alt"  route="Help"></avam-menu-item>
-			<avam-menu-group label="Sub Menu" icon="glyphicon-cd">
-				
+			<avam-menu-group label="Sub Menu" icon="glyphicon-cd">				
 				<avam-menu-item label="Sub Menu 1" icon="glyphicon-phone" route="Sub Menu 1"></avam-menu-item>
 				<avam-menu-item label="Sub Menu 2" icon="glyphicon-dashboard" route="Sub Menu 2"></avam-menu-item>
 				<avam-menu-item label="Sub Menu 3" icon="glyphicon-phone" route="Sub Menu 3"></avam-menu-item>
@@ -34,12 +33,13 @@
 	<script src="lib/angular-animate/angular-animate.js"></script>
 	
 	<!--AVAM MENU SCRIPT FILES-->
-	<!--<script src="dist/avamMenu.module.js"></script>
+	<script src="dist/avamMenu.module.js"></script>
+	<script src="dist/avamMenu.controller.js"></script>
 	<script src="dist/avamMenu.directive.js"></script>
 	<script src="dist/avamMenuItem.directive.js"></script>
-	<script src="dist/avamMenuGroup.directive.js"></script>-->
+	<script src="dist/avamMenuGroup.directive.js"></script>
 	
-	<script src="dist/avam-menu.js"></script>
+	<!--<script src="dist/avam-menu.js"></script>-->
 
 	<script src="proto/app.js"></script>
 	<script src="proto/app.controller.js"></script>

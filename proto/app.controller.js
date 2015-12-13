@@ -4,8 +4,9 @@ var avam;
     (function (proto) {
         'use strict';
         var ApplicationController = (function () {
-            function ApplicationController(scope) {
+            function ApplicationController(scope, rootScope) {
                 this.scope = scope;
+                this.rootScope = rootScope;
                 this.route = 'Not Initialized';
                 this.onRouteChanged();
                 this.onOrientationChange();
@@ -23,7 +24,15 @@ var avam;
                     _this.scope.isMenuVertical = data.isVertical;
                 });
             };
-            ApplicationController.$inject = ['$scope'];
+            ApplicationController.prototype.toggleMenu = function () {
+                this.show = !this.show;
+                this.rootScope.$broadcast('AVAM-MENU-VISIBILITY-CHANGED', {
+                    show: this.show,
+                    isMenuVertical: !this.scope.isMenuVertical,
+                    allowToggle: true
+                });
+            };
+            ApplicationController.$inject = ['$scope', '$rootScope'];
             return ApplicationController;
         })();
         angular.module("avam").controller('appController', ApplicationController);

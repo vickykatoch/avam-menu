@@ -25,10 +25,10 @@ module avam.menu{
 				controller : IAvamMenuController) : void {		
 			
 			scope.isActive= ():boolean=>{
-				return elem === controller.getActiveElement() && controller.isVertical();
+				return elem === controller.getActiveElement() && controller.isMenuVertical();
 			}
 			scope.isVertical =():boolean=>{
-				return controller.isVertical() || elem.parents('.avam-sub-menu').length > 0;
+				return controller.isMenuVertical() || elem.parents('.avam-sub-menu').length > 0;
 			}
 			elem.on('click',(evt:UIEvent):void=>{
 				//evt.stopPropagation();

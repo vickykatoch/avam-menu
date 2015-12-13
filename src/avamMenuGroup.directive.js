@@ -42,3 +42,4 @@ var avam;
         angular.module("avam-menu").directive("avamMenuGroup", AvamMenuGroupDirective.instance);
     })(menu = avam.menu || (avam.menu = {}));
 })(avam || (avam = {}));
+//# sourceMappingURL=avamMenuGroup.directive.js.map

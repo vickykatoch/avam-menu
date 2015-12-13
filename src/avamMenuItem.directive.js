@@ -23,8 +23,6 @@ var avam;
                     return controller.isMenuVertical() || elem.parents('.avam-sub-menu').length > 0;
                 };
                 elem.on('click', function (evt) {
-                    //evt.stopPropagation();
-                    //evt.preventDefault();
                     scope.$apply(function () {
                         controller.setActiveElement(elem);
                         controller.setRoute(attributes.route);
@@ -36,3 +34,4 @@ var avam;
         angular.module("avam-menu").directive("avamMenuItem", AvamMenuItemDirective.instance);
     })(menu = avam.menu || (avam.menu = {}));
 })(avam || (avam = {}));
+//# sourceMappingURL=avamMenuItem.directive.js.map

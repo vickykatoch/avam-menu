@@ -25,3 +25,4 @@ var avam;
         angular.module("avam-menu").directive("avamMenu", AvamMenuDirective.instance);
     })(menu = avam.menu || (avam.menu = {}));
 })(avam || (avam = {}));
+//# sourceMappingURL=avamMenu.directive.js.map

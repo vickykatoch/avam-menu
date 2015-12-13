@@ -4,6 +4,7 @@ module avam.proto{
 	interface IApplicationController{
 		onRouteChanged(): void;
 		onOrientationChange(): void;
+		toggleMenu():void;
 		route:string;
 	}
 	interface IApplicationScope extends ng.IScope{
@@ -13,9 +14,9 @@ module avam.proto{
 	
 	class ApplicationController implements IApplicationController{
 		public route:string;
-		
-		static $inject =['$scope'];
-		constructor(private scope: IApplicationScope){
+		private show:boolean;
+		static $inject =['$scope','$rootScope'];
+		constructor(private scope: IApplicationScope, private rootScope : ng.IRootScopeService){
 			this.route = 'Not Initialized';
 			this.onRouteChanged();
 			this.onOrientationChange();
@@ -32,7 +33,14 @@ module avam.proto{
 				this.scope.isMenuVertical=data.isVertical;
 			});
 		}
-		
+		toggleMenu():void{
+			this.show= !this.show;
+			this.rootScope.$broadcast('AVAM-MENU-VISIBILITY-CHANGED', {
+				show : this.show,
+				isMenuVertical: !this.scope.isMenuVertical,
+				allowToggle:true
+			});
+		}
 	}
 	
 	angular.module("avam").controller('appController', ApplicationController);

@@ -1,6 +1,182 @@
-var avam;!function(a){var n;!function(a){angular.module("avam-menu",["ngAnimate"])}(n=a.menu||(a.menu={}))}(avam||(avam={}));
-angular.module("avam-menu").run(["$templateCache",function(n){n.put("src/avamMenu.template.html",'<div class="avam-menu-panel" \n	ng-class="{\'avam-menu-panel-horizontal\' : !vm.isMenuVertical(), \'avam-menu-panel-vertical\' : vm.isMenuVertical()}">\n	<ul class="avam-menu" ng-transclude>\n	</ul>\n	<a class="glyphicon avam-layout-btn pull-right" \n		ng-class="{\'avam-layout-btn-horizontal glyphicon-menu-left\' : !vm.isMenuVertical(), \'glyphicon-menu-up\' : vm.isMenuVertical()}"\n		ng-show="vm.getAllowToggle()"\n		ng-click="vm.toggleMenuOrientation()">\n	</a>\n</div>'),n.put("src/avamMenuGroup.template.html",'<li class="avam-selectable-item avam-group-menu" ng-click="onToggleSubMenu()"\n	ng-class="{\'avam-menu-item-horizontal\' : !isVertical()}">\n	<div class="avam-noselect" >\n		<i class="glyphicon {{icon}} avam-menu-icon"></i>\n		{{label}}\n		<i class="glyphicon glyphicon-menu-left avam-menu-group-indicator"\n			ng-class="{\'glyphicon-menu-down\' : isOpen}"\n			ng-show="isVertical()"\n			></i>\n	</div>\n</li>\n<div ng-show="isOpen" class="avam-sub-menu avam-fade-in-animation" \n	ng-class="{\'avam-drop-down-menu\' :  !isVertical()}">\n	<ul ng-transclude></ul>\n</div>'),n.put("src/avamMenuItem.template.html",'<li class="avam-selectable-item" \n	ng-class="{\'avam-menu-item-horizontal\' : !vm.isVertical()}">\n	<div class="avam-noselect">\n		<i class="glyphicon {{icon}} avam-menu-icon"></i>\n		{{label}}\n	</div>\n	<i class="glyphicon glyphicon-triangle-left avam-menu-active-indicator" \n		ng-if="isActive()"></i>\n</li>')}]);
-var avam;!function(e){var n;!function(e){var n=function(){function e(){this.require="^avamMenu",this.scope={label:"@",icon:"@",route:"@"},this.templateUrl="src/avamMenuItem.template.html"}return e.instance=function(){return new e},e.prototype.link=function(e,n,t,a){e.isActive=function(){return n===a.getActiveElement()&&a.isMenuVertical()},e.isVertical=function(){return a.isMenuVertical()||n.parents(".avam-sub-menu").length>0},n.on("click",function(i){e.$apply(function(){a.setActiveElement(n),a.setRoute(t.route)})})},e}();angular.module("avam-menu").directive("avamMenuItem",n.instance)}(n=e.menu||(e.menu={}))}(avam||(avam={}));
-var avam;!function(n){var e;!function(n){"use strict";var e=function(){function n(){this.transclude=!0,this.require="^avamMenu",this.scope={label:"@",icon:"@"},this.templateUrl="src/avamMenuGroup.template.html"}return n.instance=function(){return new n},n.prototype.link=function(n,e,t,u){n.isOpen=!1,n.onToggleSubMenu=function(){n.isOpen=!n.isOpen,n.isVertical()||0!=e.parents(".avam-sub-menu").length||(u.setGroupMenuScope(n),n.setSubMenuPosition())},n.isVertical=function(){return u.isMenuVertical()||e.parents(".avam-sub-menu").length>0},n.closeMenu=function(){n.isOpen=!1},n.setSubMenuPosition=function(){var n=e.offset(),t=e.parents(".avam-menu-panel").height();$(".avam-sub-menu").css({left:n.left,top:t})}},n}();angular.module("avam-menu").directive("avamMenuGroup",e.instance)}(e=n.menu||(n.menu={}))}(avam||(avam={}));
-var avam;!function(n){var t;!function(n){var t=function(){function t(){this.transclude=!0,this.scope={allowToggle:"@",orientation:"@"},this.controller=n.AvamMenuController,this.controllerAs="vm",this.templateUrl="src/avamMenu.template.html"}return t.instance=function(){return new t},t.prototype.link=function(n,t,e){n.vm.setAllowToggle(e.allowToggle&&"true"===e.allowToggle),n.vm.setMenuOrientation(e.orientation)},t}();angular.module("avam-menu").directive("avamMenu",t.instance)}(t=n.menu||(n.menu={}))}(avam||(avam={}));
-var avam;!function(t){var e;!function(t){var e=function(){function t(t,e){var o=this;this.scope=t,this.rootScope=e,t.$on("AVAM-MENU-VISIBILITY-CHANGED",function(t,e){o.isVisible=e.show,o.isVertical=e.isMenuVertical,o.allowMenuToggle=e.allowToggle})}return t.prototype.toggleMenuOrientation=function(){this.isVertical=!this.isVertical,this.rootScope.$broadcast("AVAM-MENU-ORIENTATION-CHANGED",{isVertical:this.isVertical})},t.prototype.setActiveElement=function(t){this.activeElement=t},t.prototype.getActiveElement=function(){return this.activeElement},t.prototype.setRoute=function(t){this.rootScope.$broadcast("AVAM-MENU-ITEM-CHANGED",{route:t})},t.prototype.setGroupMenuScope=function(t){this.groupMenuItemScope=t},t.prototype.setVisibility=function(t){this.isVisible=t},t.prototype.isMenuVisible=function(){return this.isVisible},t.prototype.isMenuVertical=function(){return this.isVertical},t.prototype.setAllowToggle=function(t){this.allowMenuToggle=t},t.prototype.getAllowToggle=function(){return this.allowMenuToggle},t.prototype.setMenuOrientation=function(t){this.isVertical=t&&"vertical"===t},t.$inject=["$scope","$rootScope"],t}();t.AvamMenuController=e}(e=t.menu||(t.menu={}))}(avam||(avam={}));
+var avam;
+(function (avam) {
+    var menu;
+    (function (menu) {
+        angular.module("avam-menu", ["ngAnimate"]);
+    })(menu = avam.menu || (avam.menu = {}));
+})(avam || (avam = {}));
+
+angular.module("avam-menu").run(["$templateCache", function($templateCache) {$templateCache.put("src/avamMenu.template.html","<div class=\"avam-menu-panel\" \n	ng-class=\"{\'avam-menu-panel-horizontal\' : !vm.isMenuVertical(), \'avam-menu-panel-vertical\' : vm.isMenuVertical()}\">\n	<ul class=\"avam-menu\" ng-transclude>\n	</ul>\n	<a class=\"glyphicon avam-layout-btn pull-right\" \n		ng-class=\"{\'avam-layout-btn-horizontal glyphicon-menu-left\' : !vm.isMenuVertical(), \'glyphicon-menu-up\' : vm.isMenuVertical()}\"\n		ng-show=\"vm.getAllowToggle()\"\n		ng-click=\"vm.toggleMenuOrientation()\">\n	</a>\n</div>");
+$templateCache.put("src/avamMenuGroup.template.html","<li class=\"avam-selectable-item avam-group-menu\" ng-click=\"onToggleSubMenu()\"\n	ng-class=\"{\'avam-menu-item-horizontal\' : !isVertical()}\">\n	<div class=\"avam-noselect\" >\n		<i class=\"glyphicon {{icon}} avam-menu-icon\"></i>\n		{{label}}\n		<i class=\"glyphicon glyphicon-menu-left avam-menu-group-indicator\"\n			ng-class=\"{\'glyphicon-menu-down\' : isOpen}\"\n			ng-show=\"isVertical()\"\n			></i>\n	</div>\n</li>\n<div ng-show=\"isOpen\" class=\"avam-sub-menu avam-fade-in-animation\" \n	ng-class=\"{\'avam-drop-down-menu\' :  !isVertical()}\">\n	<ul ng-transclude></ul>\n</div>");
+$templateCache.put("src/avamMenuItem.template.html","<li class=\"avam-selectable-item\" \n	ng-class=\"{\'avam-menu-item-horizontal\' : !isVertical()}\">\n	<div class=\"avam-noselect\">\n		<i class=\"glyphicon {{icon}} avam-menu-icon\"></i>\n		{{label}}\n	</div>\n	<i class=\"glyphicon glyphicon-triangle-left avam-menu-active-indicator\" \n		ng-if=\"isActive()\"></i>\n</li>");}]);
+var avam;
+(function (avam) {
+    var menu;
+    (function (menu) {
+        var AvamMenuItemDirective = (function () {
+            function AvamMenuItemDirective() {
+                this.require = '^avamMenu';
+                this.scope = {
+                    label: '@',
+                    icon: '@',
+                    route: '@'
+                };
+                this.templateUrl = 'src/avamMenuItem.template.html';
+            }
+            AvamMenuItemDirective.instance = function () {
+                return new AvamMenuItemDirective;
+            };
+            AvamMenuItemDirective.prototype.link = function (scope, elem, attributes, controller) {
+                scope.isActive = function () {
+                    return elem === controller.getActiveElement() && controller.isMenuVertical();
+                };
+                scope.isVertical = function () {
+                    return controller.isMenuVertical() || elem.parents('.avam-sub-menu').length > 0;
+                };
+                elem.on('click', function (evt) {
+                    //evt.stopPropagation();
+                    //evt.preventDefault();
+                    scope.$apply(function () {
+                        controller.setActiveElement(elem);
+                        controller.setRoute(attributes.route);
+                    });
+                });
+            };
+            return AvamMenuItemDirective;
+        })();
+        angular.module("avam-menu").directive("avamMenuItem", AvamMenuItemDirective.instance);
+    })(menu = avam.menu || (avam.menu = {}));
+})(avam || (avam = {}));
+
+var avam;
+(function (avam) {
+    var menu;
+    (function (menu) {
+        'use strict';
+        var AvamMenuGroupDirective = (function () {
+            function AvamMenuGroupDirective() {
+                this.transclude = true;
+                this.require = '^avamMenu';
+                this.scope = {
+                    label: '@',
+                    icon: '@'
+                };
+                this.templateUrl = 'src/avamMenuGroup.template.html';
+            }
+            AvamMenuGroupDirective.instance = function () {
+                return new AvamMenuGroupDirective;
+            };
+            AvamMenuGroupDirective.prototype.link = function (scope, elem, attributes, controller) {
+                scope.isOpen = false;
+                scope.onToggleSubMenu = function () {
+                    scope.isOpen = !scope.isOpen;
+                    if (!scope.isVertical() && elem.parents('.avam-sub-menu').length == 0) {
+                        controller.setGroupMenuScope(scope);
+                        scope.setSubMenuPosition();
+                    }
+                };
+                scope.isVertical = function () {
+                    return controller.isMenuVertical() || elem.parents('.avam-sub-menu').length > 0;
+                };
+                scope.closeMenu = function () {
+                    scope.isOpen = false;
+                };
+                scope.setSubMenuPosition = function () {
+                    var pos = elem.offset(), top = elem.parents('.avam-menu-panel').height();
+                    $('.avam-sub-menu').css({ 'left': pos.left, 'top': top });
+                };
+            };
+            ;
+            return AvamMenuGroupDirective;
+        })();
+        angular.module("avam-menu").directive("avamMenuGroup", AvamMenuGroupDirective.instance);
+    })(menu = avam.menu || (avam.menu = {}));
+})(avam || (avam = {}));
+
+var avam;
+(function (avam) {
+    var menu;
+    (function (menu) {
+        var AvamMenuDirective = (function () {
+            function AvamMenuDirective() {
+                this.transclude = true;
+                this.scope = {
+                    allowToggle: '@',
+                    orientation: '@'
+                };
+                this.controller = menu.AvamMenuController;
+                this.controllerAs = "vm";
+                this.templateUrl = 'src/avamMenu.template.html';
+            }
+            AvamMenuDirective.instance = function () {
+                return new AvamMenuDirective;
+            };
+            AvamMenuDirective.prototype.link = function (scope, elem, attribs) {
+                scope.vm.setAllowToggle(attribs.allowToggle && attribs.allowToggle === 'true');
+                scope.vm.setMenuOrientation(attribs.orientation);
+            };
+            return AvamMenuDirective;
+        })();
+        angular.module("avam-menu").directive("avamMenu", AvamMenuDirective.instance);
+    })(menu = avam.menu || (avam.menu = {}));
+})(avam || (avam = {}));
+
+var avam;
+(function (avam) {
+    var menu;
+    (function (menu) {
+        var AvamMenuController = (function () {
+            function AvamMenuController(scope, rootScope) {
+                var _this = this;
+                this.scope = scope;
+                this.rootScope = rootScope;
+                scope.$on('AVAM-MENU-VISIBILITY-CHANGED', function (evt, data) {
+                    _this.isVisible = data.show;
+                    _this.isVertical = data.isMenuVertical;
+                    _this.allowMenuToggle = data.allowToggle;
+                });
+            }
+            AvamMenuController.prototype.toggleMenuOrientation = function () {
+                this.isVertical = !this.isVertical;
+                this.rootScope.$broadcast('AVAM-MENU-ORIENTATION-CHANGED', {
+                    isVertical: this.isVertical
+                });
+            };
+            AvamMenuController.prototype.setActiveElement = function (elem) {
+                this.activeElement = elem;
+            };
+            AvamMenuController.prototype.getActiveElement = function () {
+                return this.activeElement;
+            };
+            AvamMenuController.prototype.setRoute = function (route) {
+                this.rootScope.$broadcast('AVAM-MENU-ITEM-CHANGED', {
+                    route: route
+                });
+            };
+            AvamMenuController.prototype.setGroupMenuScope = function (groupMenuItemScope) {
+                this.groupMenuItemScope = groupMenuItemScope;
+            };
+            AvamMenuController.prototype.setVisibility = function (isVisible) {
+                this.isVisible = isVisible;
+            };
+            AvamMenuController.prototype.isMenuVisible = function () {
+                return this.isVisible;
+            };
+            AvamMenuController.prototype.isMenuVertical = function () {
+                return this.isVertical;
+            };
+            AvamMenuController.prototype.setAllowToggle = function (isAllowed) {
+                this.allowMenuToggle = isAllowed;
+            };
+            AvamMenuController.prototype.getAllowToggle = function () {
+                return this.allowMenuToggle;
+            };
+            AvamMenuController.prototype.setMenuOrientation = function (orientation) {
+                this.isVertical = orientation && orientation === "vertical";
+            };
+            AvamMenuController.$inject = ['$scope', '$rootScope'];
+            return AvamMenuController;
+        })();
+        menu.AvamMenuController = AvamMenuController;
+    })(menu = avam.menu || (avam.menu = {}));
+})(avam || (avam = {}));

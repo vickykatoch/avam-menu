@@ -31,7 +31,7 @@ gulp.task('compile:js',['compile:ts','compile:tcache'], function () {
     return gulp
             .src(gulpConfig.jsFilePath)
             .pipe(angularFilesort())
-            .pipe(uglify())
+            //.pipe(uglify())
             .pipe(concat(gulpConfig.outputFile))            
             .pipe(gulp.dest(gulpConfig.outputPath));                
 });

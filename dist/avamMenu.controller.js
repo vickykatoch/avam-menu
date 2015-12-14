@@ -7,6 +7,10 @@ var avam;
                 var _this = this;
                 this.scope = scope;
                 this.rootScope = rootScope;
+                this.isVertical = true;
+                this.isVisible = true;
+                this.allowMenuToggle = true;
+                this.groupMenuItemScope = null;
                 scope.$on('AVAM-MENU-VISIBILITY-CHANGED', function (evt, data) {
                     _this.isVisible = data.show;
                     _this.isVertical = data.isMenuVertical;

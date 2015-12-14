@@ -19,10 +19,10 @@ module avam.menu{
 	
 	export class AvamMenuController implements IAvamMenuController{
 		private activeElement:ng.IAugmentedJQuery;
-		private isVertical:boolean;
-		private isVisible:boolean;
-		private allowMenuToggle:boolean;
-		private groupMenuItemScope: IGroupMenuItemScope;	
+		private isVertical:boolean =true;
+		private isVisible:boolean=true;
+		private allowMenuToggle:boolean=true;
+		private groupMenuItemScope: IGroupMenuItemScope=null;	
 		
 		
 		static $inject =['$scope', '$rootScope'];

@@ -29,8 +29,6 @@ module avam.menu{
 		constructor(private scope : IAvamMenuScope, private rootScope: ng.IRootScopeService){
 			scope.$on('AVAM-MENU-VISIBILITY-CHANGED', (evt: ng.IAngularEvent,  data:any):void=>{
 				this.isVisible = data.show;
-				this.isVertical = data.isMenuVertical;
-				this.allowMenuToggle = data.allowToggle;
 			});
 			
 			$(document).click((evt: JQueryEventObject):void=>{

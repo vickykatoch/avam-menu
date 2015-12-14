@@ -136,8 +136,6 @@ var avam;
                 this.groupMenuItemScope = null;
                 scope.$on('AVAM-MENU-VISIBILITY-CHANGED', function (evt, data) {
                     _this.isVisible = data.show;
-                    _this.isVertical = data.isMenuVertical;
-                    _this.allowMenuToggle = data.allowToggle;
                 });
                 $(document).click(function (evt) {
                     if (_this.allowMenuToggle && _this.groupMenuItemScope && !_this.isVertical) {

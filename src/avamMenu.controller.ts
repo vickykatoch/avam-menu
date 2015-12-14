@@ -32,6 +32,20 @@ module avam.menu{
 				this.isVertical = data.isMenuVertical;
 				this.allowMenuToggle = data.allowToggle;
 			});
+			
+			$(document).click((evt: JQueryEventObject):void=>{
+					if( this.allowMenuToggle && this.groupMenuItemScope && !this.isVertical){
+						if ($(evt.target).parent().hasClass('avam-group-menu')){
+							return;
+						}	
+						scope.$apply(()=>{
+							this.groupMenuItemScope.closeMenu();
+							evt.preventDefault();
+							evt.stopPropagation();
+						})
+					}	
+				});
+			
 		}
 		
 		toggleMenuOrientation():void {

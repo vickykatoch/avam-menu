@@ -12,6 +12,18 @@ var avam;
                     _this.isVertical = data.isMenuVertical;
                     _this.allowMenuToggle = data.allowToggle;
                 });
+                $(document).click(function (evt) {
+                    if (_this.allowMenuToggle && _this.groupMenuItemScope && !_this.isVertical) {
+                        if ($(evt.target).parent().hasClass('avam-group-menu')) {
+                            return;
+                        }
+                        scope.$apply(function () {
+                            _this.groupMenuItemScope.closeMenu();
+                            evt.preventDefault();
+                            evt.stopPropagation();
+                        });
+                    }
+                });
             }
             AvamMenuController.prototype.toggleMenuOrientation = function () {
                 this.isVertical = !this.isVertical;
